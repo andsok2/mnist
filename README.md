@@ -1,2 +1,2 @@
 # mnist
-based on http://neuralnetworksanddeeplearning.com/
+based on http://yann.lecun.com/exdb/mnist/ and http://neuralnetworksanddeeplearning.com/

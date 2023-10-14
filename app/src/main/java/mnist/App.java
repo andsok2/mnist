@@ -3,62 +3,14 @@
  */
 package mnist;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.zip.GZIPInputStream;
-
-
-
 public class App {
     
-    int magicNum = 0;
-    int numOfItems = 0;
-    int numOfRows = 0;
-    int numOfCols = 0;
-    int[][] aa;
     
     
-    public int getData() {
-        try {
-            InputStream is = getClass().getClassLoader().getResourceAsStream("train-images-idx3-ubyte.gz");
-            GZIPInputStream zis = new GZIPInputStream(is);
-
-            byte[] b = zis.readNBytes(4);
-            for (int i=0 ; i<b.length;i++) {
-                magicNum = (magicNum << 8) + (b[i] & 0xFF);
-            }
-            b = zis.readNBytes(4);
-            for (int i=0 ; i<b.length;i++) {
-                numOfItems = (numOfItems << 8) + (b[i] & 0xFF);
-            }
-            if(magicNum == 0x803) {
-                b = zis.readNBytes(4);
-                for (int i=0 ; i<b.length;i++) {
-                    numOfRows = (numOfRows << 8) + (b[i] & 0xFF);
-                }
-                b = zis.readNBytes(4);
-                for (int i=0 ; i<b.length;i++) {
-                    numOfCols = (numOfCols << 8) + (b[i] & 0xFF);
-                }
-            }
-            aa = new int[numOfItems][numOfRows*numOfCols];
-            for(int j=0;j<numOfItems;j++) {
-                b = zis.readNBytes(numOfRows*numOfCols);
-                for(int i=0 ; i<b.length;i++) {
-                    aa[j][i] = b[i] & 0xFF;
-                }
-            }
-            
-        } catch(IOException io) {
-            System.out.println("cannot read train-images-idx3-ubyte.gz");
-        }
-        return 0;
-        
-    }
-
     public static void main(String[] args) {
-        System.out.println(new App().getData());
         
-        
+        MainFrame frame = new MainFrame();
+        frame.setVisible(true);
+
     }
 }

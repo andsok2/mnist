@@ -32,9 +32,9 @@ public class MainFrame extends JFrame {
         aa.init();
         this.setTrainingSet(aa);
         dCanvas = new DigitCanvas();
-        dCanvas.setTrainingSet(aa);
         dCanvas.setImg(trSet.getImage());
         initComponents();
+        this.setResizable(false);
     }
     
     private void initComponents() {
@@ -86,9 +86,8 @@ public class MainFrame extends JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dCanvas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
-                        .addContainerGap(30, Short.MAX_VALUE))
-                )));
+                        .addComponent(jLabel5)))
+                    .addContainerGap(30, Short.MAX_VALUE)));
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()

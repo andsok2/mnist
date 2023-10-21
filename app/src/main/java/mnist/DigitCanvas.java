@@ -14,12 +14,7 @@ import java.awt.Graphics;
  */
 public class DigitCanvas extends Canvas {
     
-    TrainingSet trSet;
-    int[] img;
-    
-    public void setTrainingSet(TrainingSet aa){
-        trSet = aa;
-    }
+    int[] img = {};
     
     public void setImg(int[] img){
         this.img = img;

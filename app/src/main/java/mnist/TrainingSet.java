@@ -18,8 +18,8 @@ public class TrainingSet {
     int numOfItems = 0;
     int numOfRows = 0;
     int numOfCols = 0;
-    int[][] aa;
-    int[] lbl;
+    short[][] aa;
+    short[] lbl;
     int position;
     
     public void init() {
@@ -44,10 +44,10 @@ public class TrainingSet {
             for (int i=0 ; i<b.length;i++) {
                 numOfItems = (numOfItems << 8) + (b[i] & 0xFF);
             }
-            lbl = new int[numOfItems];
+            lbl = new short[numOfItems];
             for(int j=0;j<numOfItems;j++) {
                 b = zis.readNBytes(1);
-                lbl[j] = b[0] & 0xFF;
+                lbl[j] = (short) (b[0] & 0xFF);
             }
             
         } catch(IOException io) {
@@ -78,11 +78,11 @@ public class TrainingSet {
                     numOfCols = (numOfCols << 8) + (b[i] & 0xFF);
                 }
             }
-            aa = new int[numOfItems][numOfRows*numOfCols];
+            aa = new short[numOfItems][numOfRows*numOfCols];
             for(int j=0;j<numOfItems;j++) {
                 b = zis.readNBytes(numOfRows*numOfCols);
                 for(int i=0 ; i<b.length;i++) {
-                    aa[j][i] = b[i] & 0xFF;
+                    aa[j][i] = (short) (b[i] & 0xFF);
                 }
             }
             
@@ -95,7 +95,7 @@ public class TrainingSet {
         return aa.length;
     }
     
-    public int[] getImage(){
+    public short[] getImage(){
         position = (int) (Math.random() * (aa.length-1));
         
         return aa[position];

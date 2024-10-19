@@ -15,13 +15,13 @@ import java.awt.Graphics;
 public class DigitCanvas extends Canvas {
     
     TrainingSet trSet;
-    int[] img;
+    short[] img;
     
     public void setTrainingSet(TrainingSet aa){
         trSet = aa;
     }
     
-    public void setImg(int[] img){
+    public void setImg(short[] img){
         this.img = img;
     }
                
